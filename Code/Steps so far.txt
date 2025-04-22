@@ -1,6 +1,0 @@
-I'm using prokka to download fna files and annotate them with blast and other tools, check reference. 
-
-This will give me a list of binary presense of genes. 
-
-seff 60813118 --format=JobID,JobName,MaxRSS,Elapsed,AllocCPUS,State
-sacct -j 60813118 --format=JobID,JobName,MaxRSS,Elapsed,CPUTime,AllocCPUS,State
