@@ -1,0 +1,9 @@
+Acinetobacter	baumannii
+Campylobacter	jejuni
+Escherichia	coli
+Klebsiella	pneumoniae
+Neisseria	gonorrhoeae
+Pseudomonas	aeruginosa
+Salmonella	enterica
+Staphylococcus	aureus
+Streptococcus	pneumoniae
