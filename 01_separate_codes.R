@@ -3,7 +3,7 @@
 #   and to separate them into the fna files codes and the fastq file codes. Then, save them 
 #   as csv files so I can reference them in HiperGator.
 #===================================================================================================
-
+library(dplyr)
 
 # set paths
 setwd("C:/Users/owvis/Desktop/CAMDA 2025/Anti Microbial Resistance")
@@ -15,9 +15,19 @@ train <- read.csv(paste0(data_path, 'training_dataset.csv'), header=TRUE)
 test <- read.delim(paste0(data_path, 'testing_dataset_reduced.csv'), header=TRUE)
 
 
+
 # training data accession codes
 train_file = data.frame(bact_type = as.factor(stringr::str_c(train$genus, train$species, sep=',')),
-                        codes = as.character(train$accession))
+                        antibiotic = as.factor(train$antibiotic),
+                        codes = as.character(train$accession)) %>% distinct()
+
+# count of codes per (bact_type, antibiotic)
+code_summary <- train_file %>%
+  group_by(bact_type, antibiotic) %>%
+  summarise(n_codes = n(), .groups = "drop")
+
+# View result
+print(code_summary)
 
 for( level in levels(train_file$bact_type)){
   cat(train_file$codes[train_file$bact_type == level], file =  paste0(data_path,"train_codes_",level, ".txt") , sep = '\n')
@@ -25,7 +35,16 @@ for( level in levels(train_file$bact_type)){
 
 # testing data accession codes
 test_file = data.frame(bact_type = as.factor(stringr::str_c(test$genus, test$species, sep=',')),
-                        codes = as.character(test$accession))
+                       antibiotic = as.factor(test$),
+                       codes = as.character(test$accession)) %>% distinct()
+
+# count of codes per (bact_type, antibiotic)
+code_summary <- train_file %>%
+  group_by(bact_type, antibiotic) %>%
+  summarise(n_codes = n(), .groups = "drop")
+
+# View result
+print(code_summary)
 
 for( level in levels(test_file$bact_type)){
   cat(test_file$codes[test_file$bact_type == level], file =  paste0(data_path,"test_codes_",level, ".txt") , sep = '\n')
