@@ -3,9 +3,9 @@
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=owenvisser@ufl.edu
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=2
-#SBATCH --mem=1gb
-#SBATCH --time=01:00:00
+#SBATCH --cpus-per-task=10
+#SBATCH --mem-per-cpu=10gb
+#SBATCH --time=20:00:00
 #SBATCH --output=/orange/somnath.datta/CAMDA2025/logs/refseq_index_%j.out
 
 # ----------------------
@@ -25,7 +25,7 @@ mkdir -p "$INDEX_OUT"
 # ----------------------
 # Loop through organisms
 # ----------------------
-while IFS=$'\t' read -r genus species; do
+while IFS=$'\t' read -r genus species || [ -n "$genus" ]; do
     organism="${genus}_${species}"
     genome_fna="${REFSEQ_FASTA}/${organism}/${organism}_genome.fna"
     index_prefix="${INDEX_OUT}/${organism}_genome"
