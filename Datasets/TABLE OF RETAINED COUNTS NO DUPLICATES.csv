@@ -1,0 +1,11 @@
+Species,antibiotic,Intermediate,Resistant,Susceptible,
+Acinetobacter baumannii,CAZ,108,247,133,
+Campylobacter jejuni,TET,0,326,211,
+Escherichia coli,GEN,19,149,344,
+Klebsiella pneumoniae,GEN,133,332,326,
+Neisseria gonorrhoeae,TET,145,329,267,
+Pseudomonas aeruginosa,CAZ,94,249,228,
+Salmonella enterica,GEN,11,285,344,
+Staphylococcus aureus,ERY,46,222,303,
+Streptococcus pneumoniae,ERY,51,246,310,
+,,607,2385,2466,5458
